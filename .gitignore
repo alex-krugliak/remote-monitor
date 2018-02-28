@@ -1,0 +1,8 @@
+.idea
+*.iml
+target
+bower_components/*
+node_modules/*
+src/main/webapp/resources/build/*
+src/main/webapp/resources/js/*
+src/main/webapp/resources/images/*

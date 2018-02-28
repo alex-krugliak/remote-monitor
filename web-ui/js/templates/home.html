@@ -1,0 +1,40 @@
+
+<div class="container">
+    <div class="row row-height">
+        <div class="col-lg-10 col-xs-10 fix-height">
+            <div class="clearfix">
+
+                <img ng-if="Home.connectionStatusOk" class="status-img" src="resources/images/bullet-green.png"/>
+                <img ng-if="!Home.connectionStatusOk" class="status-img" src="resources/images/bullet-red.png"/>
+                <span class="server-status-line" ng-class="Home.isConnectionOk()" ng-bind-html="Home.serverConnection"></span>
+            </div>
+            <div>
+
+                <img ng-if="Home.connectionHardwareStatusOk" class="status-img" src="resources/images/bullet-green.png"/>
+                <img ng-if="!Home.connectionHardwareStatusOk" class="status-img" src="resources/images/bullet-red.png"/>
+                <span class="server-status-line" ng-class="Home.isHardwareConnectionOk()" ng-bind-html="Home.serverHardwareConnection"></span>
+            </div>
+
+        </div>
+        <div class="col-lg-2 col-xs-2 fix-height">
+            <span class="bottom-logout-aligned">
+                <span>{{Home.username}}</span>
+                <button type="button" class="btn btn-default" ng-click="Home.logout()">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Выйти
+                </button>
+
+            </span>
+
+
+
+        </div>
+    </div>
+
+    <toaster-container
+            toaster-options="{'position-class': 'toast-bottom-full-width', 'toaster-id' : 'errorNotification'}"></toaster-container>
+    <toaster-container
+            toaster-options="{'position-class': 'toast-center', 'toaster-id' : 'allPageNotification'}"></toaster-container>
+    <div ui-view autoscroll/>
+
+
+</div>

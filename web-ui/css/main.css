@@ -1,0 +1,186 @@
+.main-title{
+    margin: 10px 0 0 5px;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-signin-heading, .form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="text"] {
+    margin-bottom: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.account-wall {
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-title {
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+
+.profile-img {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.status-img {
+    width: 40px;
+    height: 40px;
+    margin: -5px 5px;
+    display: inline-block;
+    float: right;
+
+}
+
+.need-help {
+    margin-top: 10px;
+}
+
+.new-account {
+    display: block;
+    margin-top: 10px;
+}
+
+.msg-login-page {
+    padding: 15px;
+    margin: 10px;
+    border-radius: 4px;
+    color: #31708f;
+    background-color: #f98482;
+    border-color: #bce8f1;
+}
+
+.error-text {
+    color: red
+}
+
+.success-text {
+    color: green
+}
+
+.fright {
+    float: right;
+}
+
+.margin-left-15 {
+    margin-left: 15px;
+}
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+
+.fix-height {
+    height: 70px;
+    position: relative;
+}
+.conn-status{
+    height: 40px;
+    position: relative;
+}
+
+.bottom-logout-aligned {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+    right: 20px;
+}
+
+.label-font-size .ct-label {
+    font-size: 12px !important;
+}
+
+.up-align {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+}
+.datatable-container {
+    margin: 15px;
+}
+
+.app-button {
+    background-color: white;
+    border-radius: 7px;
+    border: 1px solid #2b669a;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+
+.app-info-button {
+    color: #2b669a;
+}
+
+.app-info-button:hover {
+    background-color: #2b669a;
+    color: white;
+}
+
+.min-w-200 {
+    min-width: 200px;
+}
+
+.min-w-100 {
+    min-width: 100px;
+}
+
+.server-status-line{
+    margin-top: 5px;
+    float: right;
+}
+
+.text-alignment > th, td {
+    text-align: center;
+}

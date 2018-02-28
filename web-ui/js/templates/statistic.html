@@ -1,0 +1,63 @@
+<div>
+    <div ncy-breadcrumb></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <p class="input-group margin-left-15">
+                    <input type="text" class="form-control" uib-datepicker-popup="MM/yyyy" ng-model="LineStatistic.dt" is-open="LineStatistic.datePickerIsOpen"
+                           datepicker-options="{minMode: 'month'}" datepicker-mode="'month'" show-button-bar="false" ng-change="LineStatistic.dateChanged(date)"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default form-control" ng-click="LineStatistic.open($event)"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="datatable-container">
+                    <table ng-if='!LineStatistic.isNoData()' class="table table-bordered table-condensed table-hover">
+                        <thead>
+                        <tr class="text-alignment">
+                            <th class="min-w-100">Дата</th>
+                            <th>Время включения</th>
+                            <th>Время отключения</th>
+                            <th>Время простоя</th>
+                            <th>Время работы с материалом</th>
+                            <th>Израсходовано материала, м</th>
+                            <th>
+                                Средняя скорость,<br> м/мин
+                            </th>
+                            <th>Время без питания</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-alignment" ng-repeat="row in LineStatistic.statisticData track by $index">
+                                <td ng-bind-html="row.date"></td>
+                                <td ng-bind-html="row.turnOnTime"></td>
+                                <td ng-bind-html="row.turnOffTime"></td>
+                                <td ng-bind-html="row.downtime"></td>
+                                <td ng-bind-html="row.periodWorkWithMaterial"></td>
+                                <td ng-bind-html="row.expenditureOfMaterial"></td>
+                                <td ng-bind-html="row.averageSpeed"></td>
+                                <td ng-bind-html="row.timePowerOff"></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if='LineStatistic.isNoData()' class='no-data'>
+                        <span>No data</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <a ui-sref="home.main()">
+                    <button class="app-button app-info-button min-w-200">Назад</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

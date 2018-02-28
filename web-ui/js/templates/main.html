@@ -1,0 +1,146 @@
+<div>
+    <div ncy-breadcrumb></div>
+    <div class="container-fluid">
+        <div class="row row-height">
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val9.name']"></label>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val10.name']"></label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val1.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.line1OnOff" >
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val1.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.line2OnOff" >
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val2.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.currentSpeedLine1" >
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val2.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.currentSpeedLine2" >
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val3.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.expenditureOfMaterialLine1" >
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val3.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.expenditureOfMaterialLine2" >
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val4.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.periodWorkWithMaterialLine1">
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val4.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.periodWorkWithMaterialLine2">
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val5.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.downtimeLine1">
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val5.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.downtimeLine2">
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val6.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.turnOnTimeTodayLine1">
+
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val6.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.turnOnTimeTodayLine2">
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val7.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.turnOffTimeLine1">
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val7.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.turnOffTimeLine2">
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val8.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.withMaterialLine1">
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <div class="form-group">
+                    <label ng-bind-html="Main.bundles['label.val8.name']"></label>
+                    <input type="text" class="form-control" ng-model="Main.currentData.withMaterialLine2">
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <a ui-sref="home.statistic({line: 'line1'})">
+                    <button class="app-button app-info-button">Статистика Линия1</button>
+                </a>
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <a ui-sref="home.statistic({line: 'line2'})">
+                    <button class="app-button app-info-button">Статистика Линия2</button>
+                </a>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div>

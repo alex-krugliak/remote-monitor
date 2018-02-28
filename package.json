@@ -1,0 +1,28 @@
+{
+  "name": "remote-monitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-iconfont": "~5.0.0",
+    "gulp-uglify": "^1.2.0"
+  },
+  "scripts": {
+    "test": "echo \\\"error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-krugliak/remote-monitor.git"
+  },
+  "author": "Aleksander Krugliak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alex-krugliak/remote-monitor/issues"
+  },
+  "homepage": "https://github.com/alex-krugliak/remote-monitor#readme"
+}
