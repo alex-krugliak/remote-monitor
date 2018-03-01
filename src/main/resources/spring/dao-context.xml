@@ -21,7 +21,8 @@
         <property name="maxStatements" value="50" />
 
         <property name="testConnectionOnCheckin" value="true" />
-        <property name="idleConnectionTestPeriod" value="300" />
+        <property name="maxIdleTime" value="600" />
+        <property name="idleConnectionTestPeriod" value="60" />
         <property name="maxIdleTimeExcessConnections" value="240" />
 
     </bean>
