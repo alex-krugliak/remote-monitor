@@ -16,18 +16,18 @@
         <property name="password" value="${db.password}"/>
 
         <!-- Pool properties -->
-        <property name="minPoolSize" value="1" />
+        <property name="minPoolSize" value="2" />
         <property name="maxPoolSize" value="20" />
         <property name="acquireIncrement" value="1"/>
         <property name="maxStatements" value="50" />
 
         <property name="testConnectionOnCheckin" value="true" />
-        <property name="maxIdleTime" value="600" />
+        <property name="maxIdleTime" value="500" />
         <property name="idleConnectionTestPeriod" value="60" />
         <property name="maxIdleTimeExcessConnections" value="240" />
         <property name="unreturnedConnectionTimeout" value="1200"/>
         <property name="preferredTestQuery" value="select 1"/>
-        <property name="debugUnreturnedConnectionStackTraces" value="true"/>
+
     </bean>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">

@@ -47,17 +47,20 @@ public class TagsServiceImpl implements TagsService {
         try {
             if (isReadInProcess.compareAndSet(false, true)) {
                 saveCurrentTag();
+                new Thread(() -> {
+                    try {
+                        Set<String> roles = new HashSet<>();
+                        roles.add("ROLE_SERVER");
+                        usersService.getAsUser("server", roles);
 
-                try {
-                    Set<String> roles = new HashSet<>();
-                    roles.add("ROLE_SERVER");
-                    usersService.getAsUser("server", roles);
+                        webSocketService.broadcastCurrentData(archiveService.getAllCurrentViewData());
+                    } catch (Exception ex) {
+                        logger.error("Websocket error - " + ex.getMessage());
+                    }
+                }).start();
 
-                    webSocketService.broadcastCurrentData(archiveService.getAllCurrentViewData());
-                } catch (Exception ex) {
-                    logger.error("Websocket error - " + ex.getMessage());
-                }
-
+            } else {
+                logger.error("Preview process haven't been finished");
             }
         } catch (Exception ex) {
             logger.error("fixed rate task error - " + ex.getMessage());

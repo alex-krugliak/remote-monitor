@@ -42,7 +42,11 @@ public class WebSocketServiceImpl implements WebSocketService {
             if (s.isOpen()) {
                 // send the current data to all the connected clients
                 logger.debug("Sent message session id = " + s.getId());
-                s.sendMessage(new TextMessage(jsonInString.getBytes(StandardCharsets.UTF_8)));
+                try {
+                    s.sendMessage(new TextMessage(jsonInString.getBytes(StandardCharsets.UTF_8)));
+                } catch (Exception ex) {
+                    logger.info("Error sent message session id = " + s.getId() + ",  exception: " + ex.getMessage());
+                }
 
             }
         }
