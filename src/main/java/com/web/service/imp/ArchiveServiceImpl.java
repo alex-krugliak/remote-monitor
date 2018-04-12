@@ -1,10 +1,7 @@
 package com.web.service.imp;
 
 import com.web.entity.*;
-import com.web.persistence.EventRepository;
-import com.web.persistence.MaterialExpenditureRepository;
-import com.web.persistence.ModuleCountersRepository;
-import com.web.persistence.TagRepository;
+import com.web.persistence.*;
 import com.web.persistence.custom.CustomDAO;
 import com.web.service.ArchiveService;
 import com.web.wrapper.comport.ComPortDataWrapper;
@@ -38,6 +35,8 @@ public class ArchiveServiceImpl implements ArchiveService {
     ModuleCountersRepository moduleCountersRepository;
     @Autowired
     private MaterialExpenditureRepository materialExpenditureRepository;
+    @Autowired
+    private DayTotalRepository dayTotalRepository;
 
     private static Map<String, Double> coefficients;
 
@@ -77,6 +76,8 @@ public class ArchiveServiceImpl implements ArchiveService {
         for (int i = calDateCurrent.get(Calendar.DAY_OF_MONTH); i <= myDayMonth; i++) {
             statisticList.add(customDAO.getDayStatistic(wallpaperLineName, calDateCurrent.getTime().getTime()));
 
+            DayTotalData dayTotalData = dayTotalRepository.getTotalDataByDate(new Date(calDateCurrent.getTime().getTime()));
+
             calDateCurrent.add(Calendar.DAY_OF_MONTH, 1);
         }
 
@@ -91,6 +92,8 @@ public class ArchiveServiceImpl implements ArchiveService {
         calDateFrom.set(Calendar.DAY_OF_MONTH, 1);
         for (int i = 0; i < amountOfDays; i++) {
             statisticList.add(customDAO.getDayStatistic(wallpaperLineName, calDateFrom.getTime().getTime()));
+
+            DayTotalData dayTotalData = dayTotalRepository.getTotalDataByDate(new Date(calDateFrom.getTime().getTime()));
 
             calDateFrom.add(Calendar.DAY_OF_MONTH, 1);
         }
@@ -347,6 +350,36 @@ public class ArchiveServiceImpl implements ArchiveService {
         int nowDay = cal.get(Calendar.DAY_OF_MONTH);
 
         return nowDay == lastTagDay;
+    }
+
+    private StatisticWrapper fillStatisticWrapper(DayTotalData dayTotalData, int lineNumber) {
+        StatisticWrapper statisticWrapper = new StatisticWrapper();
+        switch (lineNumber) {
+            case 1:
+                statisticWrapper.setAverageSpeed(dayTotalData.getAverageSpeed1());
+                statisticWrapper.setDowntime(dayTotalData.getDowntimeLine1());
+                statisticWrapper.setExpenditureOfMaterial(dayTotalData.getExpenditureOfMaterialLine1());
+                statisticWrapper.setPeriodWorkWithMaterial(dayTotalData.getPeriodWorkWithMaterialLine1());
+                statisticWrapper.setTimePowerOff(dayTotalData.getTimePowerOff1());
+                statisticWrapper.setTurnOffTime(dayTotalData.getTurnOffTimeLine1());
+                statisticWrapper.setDate(dayTotalData.getTimeStamp().getTime());
+                statisticWrapper.setStatisticAbout("Line1");
+
+                break;
+            case 2:
+
+                statisticWrapper.setAverageSpeed(dayTotalData.getAverageSpeed2());
+                statisticWrapper.setDowntime(dayTotalData.getDowntimeLine2());
+                statisticWrapper.setExpenditureOfMaterial(dayTotalData.getExpenditureOfMaterialLine2());
+                statisticWrapper.setPeriodWorkWithMaterial(dayTotalData.getPeriodWorkWithMaterialLine2());
+                statisticWrapper.setTimePowerOff(dayTotalData.getTimePowerOff2());
+                statisticWrapper.setTurnOffTime(dayTotalData.getTurnOffTimeLine2());
+                statisticWrapper.setDate(dayTotalData.getTimeStamp().getTime());
+                statisticWrapper.setStatisticAbout("Line2");
+                break;
+
+        }
+        return statisticWrapper;
     }
 
 

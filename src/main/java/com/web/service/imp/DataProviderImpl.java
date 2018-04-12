@@ -38,6 +38,7 @@ public class DataProviderImpl implements DataProvider {
 
         SerialPort serial = new SerialPort(this.serialName);
         ComPortDataWrapper readResult = new ComPortDataWrapper();
+        readResult.setConnectionComPortOk(false);
 
         try {
             openPort(serial);
@@ -70,6 +71,7 @@ public class DataProviderImpl implements DataProvider {
                     logger.debug("Try to close COM port");
                     serial.closePort();
                 }
+
             } catch (Exception e) {
                 logger.error("Cant't close COM port error, " + e.getMessage(), e);
             }
