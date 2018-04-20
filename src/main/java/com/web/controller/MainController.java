@@ -29,7 +29,8 @@ public class MainController extends BaseController {
 
     @RequestMapping({"/", "/home"})
     public String indexPage() {
-        return "index";
+
+        return "/views/index.html";
     }
 
     @RequestMapping("/getBundles")

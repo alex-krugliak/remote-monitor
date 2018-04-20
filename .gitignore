@@ -3,6 +3,7 @@
 target
 bower_components/*
 node_modules/*
-src/main/webapp/resources/build/*
-src/main/webapp/resources/js/*
-src/main/webapp/resources/images/*
+src/main/resources/static/public/build/*
+src/main/resources/static/public/js/*
+src/main/resources/static/public/images/*
+src/main/resources/static/public/**

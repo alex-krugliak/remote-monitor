@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.ServletRequest;
 
 /**
  * Created on 01.09.15.
@@ -26,6 +29,13 @@ public class AuthenticationController extends BaseController {
     @Autowired
     private CustomTokensService customTokensService;
 
+    @RequestMapping("/login")
+    public ModelAndView login(ServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/views/login.html");
+        modelAndView.addObject("error", "dddddd");
+        return modelAndView;
+    }
 
     @ResponseBody
     @RequestMapping("/token")

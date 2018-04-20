@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EntityScan("com.web.entity")
-@ComponentScan({"com.web.persistence", "com.web.service", "com.web.security"})
+@ComponentScan({"com.web.persistence", "com.web.service"})
 @EnableJpaRepositories(basePackages = {"com.web.persistence"})
 @EnableTransactionManagement(proxyTargetClass = true)
 public class JpaConfig {

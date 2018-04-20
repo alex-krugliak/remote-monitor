@@ -10,13 +10,15 @@ import com.web.wrapper.comport.ComPortDataWriteWrapper;
 import jssc.SerialPort;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 /**
  * Created on 8/4/16.
  */
-
+@Service
 public class DataProviderImpl implements DataProvider {
 
     private static final Logger logger = Logger.getLogger(DataProviderImpl.class);
@@ -26,12 +28,10 @@ public class DataProviderImpl implements DataProvider {
 
     public static final Long MAIN_MODULE_ID = 1L;
 
+    @Value("${comport.name}")
     private String serialName;
 
 
-    public DataProviderImpl(String comportName) {
-        this.serialName = comportName;
-    }
 
     @Override
     public synchronized ComPortDataWrapper loadTagsData(ComPortDataWriteWrapper dataWrite) {
