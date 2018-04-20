@@ -6,7 +6,7 @@ var cssmin = require('gulp-cssmin');
 
 
 gulp.task('clean', function() {
-    gulp.src('./src/main/webapp/resources/build')
+    gulp.src('./src/main/resources/static/build')
         .pipe(clean());
     
 });
@@ -25,12 +25,12 @@ gulp.task('build', function() {
         './bower_components/angular-sanitize/angular-sanitize.min.js'])
         .pipe(gp_concat('vendor.js'))
         //.pipe(gp_uglify())
-        .pipe(gulp.dest('./src/main/webapp/resources/build/js'));
+        .pipe(gulp.dest('./src/main/resources/static/build/js'));
 
     gulp.src(['./web-ui/js/**/*.js'])
         .pipe(gp_concat('main.js'))
         //.pipe(gp_uglify())
-        .pipe(gulp.dest('./src/main/webapp/resources/build/js'));
+        .pipe(gulp.dest('./src/main/resources/static/build/js'));
 
 
 
@@ -39,16 +39,16 @@ gulp.task('build', function() {
         './bower_components/angularjs-toaster/toaster.min.css', './web-ui/css/main.css'])
         .pipe(gp_concat('main.css'))
         //.pipe(cssmin())
-        .pipe(gulp.dest('./src/main/webapp/resources/build/css'));
+        .pipe(gulp.dest('./src/main/resources/static/build/css'));
 
     gulp.src(['./bower_components/bootstrap/dist/fonts/*'])
-        .pipe(gulp.dest('./src/main/webapp/resources/build/fonts'));
+        .pipe(gulp.dest('./src/main/resources/static/build/fonts'));
 
     gulp.src(['./web-ui/js/templates/*'])
-        .pipe(gulp.dest('./src/main/webapp/resources/js/templates'));
+        .pipe(gulp.dest('./src/main/resources/static/js/templates'));
 
     gulp.src(['./web-ui/images/*'])
-        .pipe(gulp.dest('./src/main/webapp/resources/images'));
+        .pipe(gulp.dest('./src/main/resources/static/images'));
 
 });
 

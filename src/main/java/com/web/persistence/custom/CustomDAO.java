@@ -12,6 +12,7 @@ import com.web.wrapper.response.DataCurrentWrapper;
 import com.web.wrapper.response.StatisticWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,13 +29,12 @@ import java.util.List;
  * Created on 21.06.16.
  */
 @Service
+@PropertySource("classpath:query.properties")
 public class CustomDAO {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @PersistenceContext
-    EntityManager entityManager;
 
     @Value("${JPQL.CURRENT.DATA}")
     private String JPQL_CURRENT_DATA;
