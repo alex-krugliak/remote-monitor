@@ -37,12 +37,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     private MaterialExpenditureRepository materialExpenditureRepository;
     @Autowired
     private DayTotalRepository dayTotalRepository;
+    @Autowired
+    private BundlesServiceImpl bundlesService;
 
-    private static Map<String, Double> coefficients;
-
-    static {
-        coefficients = BundlesServiceImpl.getAllCoefficient("/coefficients.properties");
-    }
 
     @Transactional(readOnly = true)
     @Override
@@ -158,7 +155,7 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Transactional
     @Override
     public Tag saveNewTag(ComPortDataWrapper comPortDataCurrent) {
-
+        Map<String, Double> coefficients = bundlesService.getAllCoefficient();
 
         Tag tag = new Tag();
 
@@ -204,7 +201,7 @@ public class ArchiveServiceImpl implements ArchiveService {
         tag = tagsRepository.save(tag);
 
         if (comPortDataCurrent.getConnectionComPortOk()) {
-            saveExpenditure(comPortDataCurrent);
+            saveExpenditure(comPortDataCurrent, coefficients);
         }
 
         return tag;
@@ -230,7 +227,7 @@ public class ArchiveServiceImpl implements ArchiveService {
         }
     }
 
-    private void saveExpenditure(ComPortDataWrapper comPortDataCurrent) {
+    private void saveExpenditure(ComPortDataWrapper comPortDataCurrent, Map<String, Double> coefficients) {
 
         Double coefficientExpenditureOfMaterialLine1 = coefficients.get("coefficientExpenditureOfMaterialLine1");
         Double coefficientExpenditureOfMaterialLine2 = coefficients.get("coefficientExpenditureOfMaterialLine2");

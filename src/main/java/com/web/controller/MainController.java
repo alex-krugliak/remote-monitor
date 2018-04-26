@@ -26,6 +26,9 @@ public class MainController extends BaseController {
 
     @Autowired
     private ArchiveService archiveService;
+    @Autowired
+    private BundlesServiceImpl bundlesService;
+
 
     @RequestMapping({"/", "/home"})
     public String indexPage() {
@@ -35,7 +38,7 @@ public class MainController extends BaseController {
     @RequestMapping("/getBundles")
     @ResponseBody
     private Map<String, String> getBundles() {
-        return BundlesServiceImpl.getAllBundles("/label_ru.properties");
+        return bundlesService.getAllBundles();
     }
 
 
