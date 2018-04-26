@@ -1,5 +1,6 @@
 package com.web.service;
 
+import com.web.entity.UsersAuthoritie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by alex on 20.04.18.
@@ -31,21 +33,21 @@ public class CustomEndCustomerAuthenticator implements AuthenticationProvider {
 
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
 
-        String oneview_username = (String) token.getPrincipal();
-        String oneview_password = (String) token.getCredentials();
+        String username = (String) token.getPrincipal();
+        String password = (String) token.getCredentials();
 
-        // EstateInfo estateInfo = checkEndCustomer(oneview_username, oneview_password);
-//        EstateInfo estateInfo = authenticationStore.authenticate(oneview_username, oneview_password);
-//
-//        if (true) {
-//            throw new BadCredentialsException("Username or password unknown");
-//        }
+        if(!usersService.checkPassword(username, password)){
+            throw new BadCredentialsException("Username or password unknown");
+        }
 
         ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority("login"));
-        UsernamePasswordAuthenticationToken loggedIn = new UsernamePasswordAuthenticationToken(token.getPrincipal(), token.getCredentials(), grantedAuthorities);
-//        loggedIn.setDetails(estateInfo);
-        return loggedIn;
+        List<UsersAuthoritie> usersAuthorities = usersService.findUserAuthorities(username);
+        for(UsersAuthoritie usersAuthoritie: usersAuthorities){
+            grantedAuthorities.add(new SimpleGrantedAuthority(usersAuthoritie.getAuthority()));
+        }
+
+        return new UsernamePasswordAuthenticationToken(token.getPrincipal(), "*", grantedAuthorities);
+
     }
 
 
