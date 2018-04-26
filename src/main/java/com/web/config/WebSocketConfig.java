@@ -15,11 +15,12 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 public class WebSocketConfig implements WebSocketConfigurer {
 
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(getWebSocketHandler(), "/webSocketHandler");
+        registry.addHandler(getWebSocketHandler(), "/webSocketHandler")
+                .withSockJS();
     }
 
     @Bean
-    public WebSocketHandler getWebSocketHandler(){
+    public WebSocketHandler getWebSocketHandler() {
         return new WebSocketHandler();
     }
 }

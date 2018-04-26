@@ -21,8 +21,6 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        debugger;
-        window.contextPath = window.location.origin;
 
         angular.bootstrap(document, ['mainApp']);
     });

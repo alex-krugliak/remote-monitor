@@ -17,7 +17,7 @@
             debugger;
             if (socket === null) {
 
-                socket = new SockJS(window.contextPath + '/webSocketHandler', null, {
+                socket = new SockJS('/webSocketHandler', null, {
                     transports: ['xhr-streaming','xhr-polling']
                 });
                 
