@@ -32,8 +32,7 @@ public class AuthenticationController extends BaseController {
     @RequestMapping("/login")
     public ModelAndView login(ServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/views/login.html");
-        modelAndView.addObject("error", "dddddd");
+        modelAndView.setViewName("login-page");
         return modelAndView;
     }
 

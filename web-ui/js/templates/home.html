@@ -4,14 +4,14 @@
         <div class="col-lg-10 col-xs-10 fix-height">
             <div class="clearfix">
 
-                <img ng-if="Home.connectionStatusOk" class="status-img" src="resources/images/bullet-green.png"/>
-                <img ng-if="!Home.connectionStatusOk" class="status-img" src="resources/images/bullet-red.png"/>
+                <img ng-if="Home.connectionStatusOk" class="status-img" src="public/images/bullet-green.png"/>
+                <img ng-if="!Home.connectionStatusOk" class="status-img" src="public/images/bullet-red.png"/>
                 <span class="server-status-line" ng-class="Home.isConnectionOk()" ng-bind-html="Home.serverConnection"></span>
             </div>
             <div>
 
-                <img ng-if="Home.connectionHardwareStatusOk" class="status-img" src="resources/images/bullet-green.png"/>
-                <img ng-if="!Home.connectionHardwareStatusOk" class="status-img" src="resources/images/bullet-red.png"/>
+                <img ng-if="Home.connectionHardwareStatusOk" class="status-img" src="public/images/bullet-green.png"/>
+                <img ng-if="!Home.connectionHardwareStatusOk" class="status-img" src="public/images/bullet-red.png"/>
                 <span class="server-status-line" ng-class="Home.isHardwareConnectionOk()" ng-bind-html="Home.serverHardwareConnection"></span>
             </div>
 

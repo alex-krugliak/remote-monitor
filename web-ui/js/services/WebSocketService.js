@@ -13,12 +13,12 @@
             closeWebsocket: closeWebsocket
         };
 
-        function initWebsocket(token) {
+        function initWebsocket() {
+            debugger;
             if (socket === null) {
 
                 socket = new SockJS(window.contextPath + '/webSocketHandler', null, {
-                    transports: ['xhr-streaming','xhr-polling'],
-                    headers: {'Auth-Token': token}
+                    transports: ['xhr-streaming','xhr-polling']
                 });
                 
 

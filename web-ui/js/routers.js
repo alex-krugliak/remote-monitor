@@ -9,7 +9,7 @@
                     var LoginService = $injector.get('LoginService');
                     LoginService.clearLocalStorage();
                     $rootScope.$emit("authError", res);
-                    $injector.get('$state').go('login');
+                    //$injector.get('$state').go('login');
                 }
 
                 return $q.reject(res);
@@ -33,7 +33,7 @@
         $stateProvider
             .state('home', {
                 abstract: true,
-                templateUrl: 'resources/js/templates/home.html',
+                templateUrl: 'public/js/templates/home.html',
                 controller: 'HomeController',
                 controllerAs: 'Home',
                 resolve: {
@@ -48,14 +48,9 @@
                         )
                     }],
                     authorize: ['LoginService', '$state', '$http', 'cfg', function (LoginService, $state, $http, cfg) {
-                        return LoginService.getToken().then(function (result) {
-                            $http.defaults.headers.common['Auth-Token'] = result.token;
-                            cfg.username = result.userName;
-                            LoginService.initWebSocket(result.token);
-                            return true;
-                        }).catch(function () {
-                            $state.go('login');
-                        });
+                        cfg.username = 'Petya';//result.userName;
+                        LoginService.initWebSocket();
+                        return true;
 
                     }],
                     currentData: ['MainService', 'authorize', function (MainService, authorize) {
@@ -67,7 +62,7 @@
             })
             .state('home.main', {
                 url: '/',
-                templateUrl: 'resources/js/templates/main.html',
+                templateUrl: 'public/js/templates/main.html',
                 controller: 'MainController',
                 controllerAs: 'Main',
                 ncyBreadcrumb: {
@@ -81,7 +76,7 @@
             })
             .state('home.statistic', {
                 url: '/statistic/:line',
-                templateUrl: 'resources/js/templates/statistic.html',
+                templateUrl: 'public/js/templates/statistic.html',
                 controller: 'LineStatisticController',
                 controllerAs: 'LineStatistic',
                 resolve: {
@@ -94,13 +89,13 @@
                     label: '{{LineStatistic.lName}}'
                 }
 
-            })
-            .state('login', {
-                url: '/login?message',
-                templateUrl: 'resources/js/templates/login.html',
-                controller: 'LoginController',
-                controllerAs: 'Login'
-            })
+            });
+            // .state('login', {
+            //     url: '/login?message',
+            //     templateUrl: 'public/js/templates/login.html',
+            //     controller: 'LoginController',
+            //     controllerAs: 'Login'
+            // })
 
 
     }

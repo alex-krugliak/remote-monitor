@@ -37,9 +37,9 @@ public class CustomEndCustomerAuthenticator implements AuthenticationProvider {
         // EstateInfo estateInfo = checkEndCustomer(oneview_username, oneview_password);
 //        EstateInfo estateInfo = authenticationStore.authenticate(oneview_username, oneview_password);
 //
-        if (true) {
-            throw new BadCredentialsException("Username or password unknown");
-        }
+//        if (true) {
+//            throw new BadCredentialsException("Username or password unknown");
+//        }
 
         ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("login"));
