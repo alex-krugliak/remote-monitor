@@ -16,9 +16,9 @@ public class MaterialExpenditureRowMapper implements RowMapper<MaterialExpenditu
         MaterialExpenditure materialExpenditure = new MaterialExpenditure();
 
         materialExpenditure.setId(resultSet.getLong("id"));
-        materialExpenditure.setExpenditureline2(resultSet.getDouble("expenditureline2"));
-        materialExpenditure.setExpenditureline1(resultSet.getDouble("expenditureline1"));
-        materialExpenditure.setTimestamp(resultSet.getDate("timestamp"));
+        materialExpenditure.setExpenditureline2(resultSet.getDouble("expenditure_line2"));
+        materialExpenditure.setExpenditureline1(resultSet.getDouble("expenditure_line1"));
+        materialExpenditure.setTimestamp(resultSet.getDate("time_stamp"));
         return materialExpenditure;
     }
 }

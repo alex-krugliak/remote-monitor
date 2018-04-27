@@ -16,7 +16,7 @@ public class TagTimestampRowMapper implements RowMapper<TagTimestampWrapper> {
         TagTimestampWrapper tagTimestampWrapper = new TagTimestampWrapper();
 
         tagTimestampWrapper.setId(resultSet.getLong("id"));
-        tagTimestampWrapper.setTimestamp(resultSet.getTimestamp("timeStamp"));
+        tagTimestampWrapper.setTimestamp(resultSet.getTimestamp("time_stamp"));
         return tagTimestampWrapper;
     }
 }
