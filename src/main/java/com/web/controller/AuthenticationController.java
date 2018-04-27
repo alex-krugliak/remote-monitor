@@ -9,6 +9,7 @@ import com.web.wrapper.request.AutentificationRequestWrapper;
 import com.web.wrapper.response.AutentificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,12 +30,17 @@ public class AuthenticationController extends BaseController {
     @Autowired
     private CustomTokensService customTokensService;
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public ModelAndView login(ServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login-page");
+        String error = request.getParameter("error");
+        if (error != null) {
+            modelAndView.addObject("error", "Ошибка - неверный Login или Password");
+        }
         return modelAndView;
     }
+
 
     @ResponseBody
     @RequestMapping("/token")
