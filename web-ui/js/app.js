@@ -9,8 +9,6 @@
         
     ]);
 
-    angular.module('mainApp').constant('cfg', {
-        version: '1.0.0'
-    });
+    
 })();
 

@@ -48,7 +48,7 @@
                         )
                     }],
                     authorize: ['LoginService', '$state', '$http', 'cfg', function (LoginService, $state, $http, cfg) {
-                        cfg.username = 'Petya';//result.userName;
+                       
                         LoginService.initWebSocket();
                         return true;
 

@@ -19,8 +19,12 @@
     <div id="home" ui-view autoscroll ></div>
 
     <script type="text/javascript">
-
+debugger;
         $(document).ready(function () {
+            angular.module('mainApp').constant('cfg', {
+                version: '1.0.0',
+                username: '${userName}'
+            });
 
             angular.bootstrap(document, ['mainApp']);
         });

@@ -20,46 +20,59 @@ public class BundlesServiceImpl {
 
     private static final Logger logger = Logger.getLogger(BundlesServiceImpl.class);
 
-    public static Map<String, String> getAllBundles() {
+    private Map<String, String> cachedBundles = null;
 
-        Properties bundles = getProperties("classpath:label_ru.properties");
-        if (bundles == null) {
-            logger.error("Bundles load error");
-            return null;
+    private Map<String, Double> cachedCoefficients = null;
+
+    public synchronized Map<String, String> getAllBundles() {
+
+        if (cachedBundles == null) {
+
+            Properties bundles = getProperties("classpath:label_ru.properties");
+            if (bundles == null) {
+                logger.error("Bundles load error");
+                return null;
+            }
+
+            Map<String, String> result = new HashMap<>();
+
+            for (String name : bundles.stringPropertyNames()) {
+                result.put(name, bundles.getProperty(name));
+            }
+            logger.debug("Bundles loaded");
+            cachedBundles = result;
+
         }
 
-        Map<String, String> result = new HashMap<>();
-
-        for (String name : bundles.stringPropertyNames()) {
-            result.put(name, bundles.getProperty(name));
-        }
-        logger.debug("Bundles loaded");
-        return result;
+        return cachedBundles;
 
 
     }
 
-    public Map<String, Double> getAllCoefficient() {
+    public synchronized Map<String, Double> getAllCoefficient() {
 
-        Properties coefficients = getProperties("classpath:coefficients.properties");
-        if (coefficients == null) {
-            logger.error("Coefficients load error");
-            return null;
+        if (cachedCoefficients == null) {
+            Properties coefficients = getProperties("classpath:coefficients.properties");
+            if (coefficients == null) {
+                logger.error("Coefficients load error");
+                return null;
+            }
+
+            Map<String, Double> result = new HashMap<>();
+
+            for (String name : coefficients.stringPropertyNames()) {
+                String value = coefficients.getProperty(name);
+                result.put(name, Double.parseDouble(value));
+            }
+            logger.debug("Coefficients loaded" + result.values());
+            cachedCoefficients = result;
         }
 
-        Map<String, Double> result = new HashMap<>();
-
-        for (String name : coefficients.stringPropertyNames()) {
-            String value = coefficients.getProperty(name);
-            result.put(name, Double.parseDouble(value));
-        }
-        logger.debug("Coefficients loaded" + result.values());
-        return result;
-
+        return cachedCoefficients;
 
     }
 
-    private static Properties getProperties(String properties) {
+    private Properties getProperties(String properties) {
         Properties prop = new Properties();
         try {
             InputStream stream = new FileSystemResourceLoader().getResource(properties).getInputStream();

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Map;
@@ -30,9 +31,12 @@ public class MainController extends BaseController {
     private BundlesServiceImpl bundlesService;
 
     @RequestMapping({"/", "/home"})
-    public String indexPage() {
-
-        return "index";
+    public ModelAndView indexPage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+        String userName = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        modelAndView.addObject("userName", userName);
+        return modelAndView;
     }
 
     @RequestMapping("/getBundles")
