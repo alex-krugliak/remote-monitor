@@ -3,6 +3,7 @@ package com.web.websocket;
 import com.web.service.WebSocketService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
@@ -17,6 +18,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
     @Autowired
     private WebSocketService webSocketService;
 
+    @Secured("ROLE_USER")
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         super.afterConnectionEstablished(session);
