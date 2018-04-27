@@ -21,6 +21,7 @@ public class Token {
     private User user;
 
     @NotNull
+    @Column(name="token_value")
     private String tokenValue;
 
     @NotNull

@@ -15,35 +15,35 @@ public class DayTotalData {
     private Long id;
 
     @NotNull
-    @Column(columnDefinition = "date", nullable = false, unique = true)
+    @Column(name="time_stamp", columnDefinition = "date", nullable = false, unique = true)
     private Date timeStamp;
-
+    @Column(name="expenditure_of_material_line1")
     private Double expenditureOfMaterialLine1;
-
+    @Column(name="period_work_with_material_line1")
     private Long periodWorkWithMaterialLine1;
-
+    @Column(name="downtime_line1")
     private Long downtimeLine1;
-
+    @Column(name="turn_on_time_today_line1")
     private Date turnOnTimeTodayLine1;
-
+    @Column(name="turn_off_time_line1")
     private Date turnOffTimeLine1;
-
+    @Column(name="average_speed1")
     private Double averageSpeed1;
-
+    @Column(name="time_power_off1")
     private Long timePowerOff1;
-
+    @Column(name="expenditure_of_material_line2")
     private Double expenditureOfMaterialLine2;
-
+    @Column(name="period_work_with_material_line2")
     private Long periodWorkWithMaterialLine2;
-
+    @Column(name="down_time_line2")
     private Long downtimeLine2;
-
+    @Column(name="turn_on_time_today_line2")
     private Date turnOnTimeTodayLine2;
-
+    @Column(name="turn_off_time_line2")
     private Date turnOffTimeLine2;
-
+    @Column(name="average_speed2")
     private Double averageSpeed2;
-
+    @Column(name="time_power_off2")
     private Long timePowerOff2;
 
     public Double getExpenditureOfMaterialLine1() {

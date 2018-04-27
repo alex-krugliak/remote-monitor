@@ -16,10 +16,11 @@ public class MaterialExpenditure {
     private Long id;
 
     @NotNull
+    @Column(name="time_stamp")
     private Date timestamp;
-
+    @Column(name="expenditure_line1")
     private Double expenditureline1;
-
+    @Column(name="expenditure_line2")
     private Double expenditureline2;
 
     public Long getId() {

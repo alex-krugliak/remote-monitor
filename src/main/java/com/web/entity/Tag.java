@@ -16,26 +16,27 @@ public class Tag {
     private Long id;
 
     @NotNull
+    @Column(name="time_stamp")
     private Date timeStamp;
-
+    @Column(name="current_speed_line1")
     private Double currentSpeedLine1;
-
+    @Column(name="line1_on_off")
     private Boolean line1OnOff;
-
+    @Column(name="with_material_line1")
     private Boolean withMaterialLine1;
-
+    @Column(name="expenditure_of_material_line1")
     private Double expenditureOfMaterialLine1;
-
+    @Column(name="current_speed_line2")
     private Double currentSpeedLine2;
-
+    @Column(name="line2_on_off")
     private Boolean line2OnOff;
-
+    @Column(name="with_material_line2")
     private Boolean withMaterialLine2;
-
+    @Column(name="expenditure_of_material_line2")
     private Double expenditureOfMaterialLine2;
-
+    @Column(name="connection_ok")
     private Boolean connectionOk;
-
+    @Column(name="power_ok")
     private Boolean powerOk;
 
     public Boolean getPowerOk() {
