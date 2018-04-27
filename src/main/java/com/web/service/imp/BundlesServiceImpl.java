@@ -40,7 +40,7 @@ public class BundlesServiceImpl {
             for (String name : bundles.stringPropertyNames()) {
                 result.put(name, bundles.getProperty(name));
             }
-            logger.debug("Bundles loaded");
+            logger.info("Bundles was loaded");
             cachedBundles = result;
 
         }
@@ -64,7 +64,7 @@ public class BundlesServiceImpl {
                 String value = coefficients.getProperty(name);
                 result.put(name, Double.parseDouble(value));
             }
-            logger.debug("Coefficients loaded" + result.values());
+            logger.info("Coefficients was loaded" + result.values());
             cachedCoefficients = result;
         }
 
