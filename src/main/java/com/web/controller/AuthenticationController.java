@@ -33,7 +33,7 @@ public class AuthenticationController extends BaseController {
     @GetMapping("/login")
     public ModelAndView login(ServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login-page");
+        modelAndView.setViewName("login");
         String error = request.getParameter("error");
         if (error != null) {
             modelAndView.addObject("error", "Ошибка - неверный Login или Password");
