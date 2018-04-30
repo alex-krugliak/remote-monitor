@@ -22,9 +22,9 @@
         <property name="maxStatements" value="50" />
 
         <property name="testConnectionOnCheckin" value="true" />
-        <property name="maxIdleTime" value="500" />
-        <property name="idleConnectionTestPeriod" value="60" />
-        <property name="maxIdleTimeExcessConnections" value="240" />
+        <property name="maxIdleTime" value="300" />
+        <property name="idleConnectionTestPeriod" value="40" />
+        <property name="maxIdleTimeExcessConnections" value="150" />
         <property name="unreturnedConnectionTimeout" value="1200"/>
         <property name="preferredTestQuery" value="select 1"/>
 
