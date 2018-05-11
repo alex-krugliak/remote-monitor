@@ -24,7 +24,6 @@
         <hibernate.version>4.3.11.Final</hibernate.version>
         <hibernate-validator.version>5.1.2.Final</hibernate-validator.version>
         <hibernate.annotations.version>4.0.4.Final</hibernate.annotations.version>
-        <c3p0.version>4.3.9.Final</c3p0.version>
 
         <spring.version>4.3.10.RELEASE</spring.version>
         <spring.data>1.4.5.RELEASE</spring.data>
@@ -122,9 +121,9 @@
             <version>${hibernate.annotations.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-c3p0</artifactId>
-            <version>${c3p0.version}</version>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1.2</version>
         </dependency>
 
         <dependency>
@@ -195,16 +194,6 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <url>http://localhost:8080/manager/text</url>
-                    <server>TomcatServer</server>
-                    <path>/monitor</path>
                 </configuration>
             </plugin>
 
