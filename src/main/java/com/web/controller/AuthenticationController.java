@@ -22,6 +22,7 @@ import javax.servlet.ServletRequest;
  */
 
 @Controller
+@RequestMapping("/")
 public class AuthenticationController extends BaseController {
 
     @Autowired
