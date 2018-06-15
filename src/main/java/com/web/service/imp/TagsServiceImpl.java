@@ -12,6 +12,7 @@ import com.web.wrapper.comport.ComPortDataWriteWrapper;
 import com.web.wrapper.response.StatisticWrapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
@@ -28,14 +33,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @Service
 public class TagsServiceImpl implements TagsService {
 
-    private static final Logger logger = Logger.getLogger(TagsServiceImpl.class);
-
     //speed will be calculated according to this interval value
     public static final int scheduledPeriod = 5000;
-
+    private static final Logger logger = Logger.getLogger(TagsServiceImpl.class);
+    @Value("${app.connect.com.port}")
+    private boolean isConnectComPort;
     private boolean isFirstStart = true;
 
     private AtomicBoolean isReadInProcess = new AtomicBoolean(false);
+
+    private ExecutorService comPortReaderExecutorService = Executors.newSingleThreadExecutor();
 
     @Autowired
     private WebSocketService webSocketService;
@@ -104,7 +111,25 @@ public class TagsServiceImpl implements TagsService {
             }
         }
 
-        ComPortDataWrapper comPortDataCurrent = dataProvider.loadTagsData(dataWrite);
+        ComPortDataWrapper comPortDataCurrent;
+        if (isConnectComPort) {
+            Callable<ComPortDataWrapper> reader = new Callable<ComPortDataWrapper>() {
+                @Override
+                public ComPortDataWrapper call() throws Exception {
+                    return dataProvider.loadTagsData( dataWrite);
+                }
+            };
+            try {
+                Future<ComPortDataWrapper> readerResult = comPortReaderExecutorService.submit(reader);
+                comPortDataCurrent = readerResult.get();
+            } catch (Exception e) {
+                comPortDataCurrent = new ComPortDataWrapper();
+            }
+
+
+        } else {
+            comPortDataCurrent = new ComPortDataWrapper();
+        }
 
         Tag tag = archiveService.saveNewTag(comPortDataCurrent);
         if (tag == null) {
