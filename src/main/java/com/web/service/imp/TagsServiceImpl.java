@@ -113,12 +113,7 @@ public class TagsServiceImpl implements TagsService {
 
         ComPortDataWrapper comPortDataCurrent;
         if (isConnectComPort) {
-            Callable<ComPortDataWrapper> reader = new Callable<ComPortDataWrapper>() {
-                @Override
-                public ComPortDataWrapper call() throws Exception {
-                    return dataProvider.loadTagsData( dataWrite);
-                }
-            };
+            Callable<ComPortDataWrapper> reader = () -> dataProvider.loadTagsData( dataWrite);
             try {
                 Future<ComPortDataWrapper> readerResult = comPortReaderExecutorService.submit(reader);
                 comPortDataCurrent = readerResult.get();
@@ -164,6 +159,7 @@ public class TagsServiceImpl implements TagsService {
         dayTotalData.setTurnOffTimeLine1(statisticWrapperLine1.getTurnOffTime());
         dayTotalData.setTurnOnTimeTodayLine1(statisticWrapperLine1.getTurnOnTime());
         dayTotalData.setAverageSpeed1(statisticWrapperLine1.getAverageSpeed());
+        dayTotalData.setTimePowerOff1(statisticWrapperLine1.getTimePowerOff());
 
 
         dayTotalData.setDowntimeLine2(statisticWrapperLine2.getDowntime());
@@ -172,6 +168,7 @@ public class TagsServiceImpl implements TagsService {
         dayTotalData.setTurnOffTimeLine2(statisticWrapperLine2.getTurnOffTime());
         dayTotalData.setTurnOnTimeTodayLine2(statisticWrapperLine2.getTurnOnTime());
         dayTotalData.setAverageSpeed2(statisticWrapperLine2.getAverageSpeed());
+        dayTotalData.setTimePowerOff2(statisticWrapperLine2.getTimePowerOff());
 
         dayTotalData.setTimeStamp(new Date(calDate.getTime().getTime()));
 
