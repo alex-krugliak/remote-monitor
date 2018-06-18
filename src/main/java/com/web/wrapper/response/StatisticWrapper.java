@@ -1,6 +1,7 @@
 package com.web.wrapper.response;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.web.entity.DayTotalData;
 import com.web.util.CustomDateJsonSerializer;
 import com.web.util.CustomTimeJsonSerializer;
 
@@ -34,6 +35,42 @@ public class StatisticWrapper {
 
     private Long timePowerOff;
 
+    public StatisticWrapper() {
+    }
+
+    public StatisticWrapper(DayTotalData dayTotalData, String wallpaperLineName) {
+        if (dayTotalData == null) {
+            return;
+        }
+        if (wallpaperLineName.equals( "line1" )) {
+
+            this.averageSpeed = dayTotalData.getAverageSpeed1();
+            this.turnOnTime = dayTotalData.getTurnOnTimeTodayLine1();
+            this.turnOffTime = dayTotalData.getTurnOffTimeLine1();
+            this.downtime = dayTotalData.getDowntimeLine1();
+            this.periodWorkWithMaterial = dayTotalData.getPeriodWorkWithMaterialLine1();
+            this.expenditureOfMaterial = dayTotalData.getExpenditureOfMaterialLine1();
+
+            this.periodPowerFail = dayTotalData.getTimePowerOff1();
+            this.timePowerOff = dayTotalData.getTimePowerOff1();
+        } else {
+
+            this.averageSpeed = dayTotalData.getAverageSpeed2();
+            this.turnOnTime = dayTotalData.getTurnOnTimeTodayLine2();
+            this.turnOffTime = dayTotalData.getTurnOffTimeLine2();
+            this.downtime = dayTotalData.getDowntimeLine2();
+            this.periodWorkWithMaterial = dayTotalData.getPeriodWorkWithMaterialLine2();
+            this.expenditureOfMaterial = dayTotalData.getExpenditureOfMaterialLine2();
+
+            this.periodPowerFail = dayTotalData.getTimePowerOff2();
+            this.timePowerOff = dayTotalData.getTimePowerOff2();
+        }
+
+        this.date = dayTotalData.getTimeStamp();
+        this.statisticAbout = wallpaperLineName;
+
+    }
+
     public Long getTimePowerOff() {
         return timePowerOff;
     }
@@ -55,7 +92,7 @@ public class StatisticWrapper {
     }
 
     public void setDate(Long date) {
-        this.date = new Date(date);
+        this.date = new Date( date );
     }
 
     public String getStatisticAbout() {

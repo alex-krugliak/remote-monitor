@@ -71,9 +71,13 @@ public class ArchiveServiceImpl implements ArchiveService {
         calDateCurrent.set(Calendar.DAY_OF_MONTH, 1);
 
         for (int i = calDateCurrent.get(Calendar.DAY_OF_MONTH); i <= myDayMonth; i++) {
-            statisticList.add(customDAO.getDayStatistic(wallpaperLineName, calDateCurrent.getTime().getTime()));
 
-            DayTotalData dayTotalData = dayTotalRepository.getTotalDataByDate(new Date(calDateCurrent.getTime().getTime()));
+            if(i != myDayMonth) {
+                DayTotalData dayTotalData = dayTotalRepository.getTotalDataByDate( new Date( calDateCurrent.getTime().getTime() ) );
+                statisticList.add(new StatisticWrapper(dayTotalData, wallpaperLineName));
+            }else{
+                statisticList.add(customDAO.getDayStatistic(wallpaperLineName, calDateCurrent.getTime().getTime()));
+            }
 
             calDateCurrent.add(Calendar.DAY_OF_MONTH, 1);
         }
@@ -88,9 +92,10 @@ public class ArchiveServiceImpl implements ArchiveService {
 
         calDateFrom.set(Calendar.DAY_OF_MONTH, 1);
         for (int i = 0; i < amountOfDays; i++) {
-            statisticList.add(customDAO.getDayStatistic(wallpaperLineName, calDateFrom.getTime().getTime()));
+            //statisticList.add(customDAO.getDayStatistic(wallpaperLineName, calDateFrom.getTime().getTime()));
 
             DayTotalData dayTotalData = dayTotalRepository.getTotalDataByDate(new Date(calDateFrom.getTime().getTime()));
+            statisticList.add(new StatisticWrapper(dayTotalData, wallpaperLineName));
 
             calDateFrom.add(Calendar.DAY_OF_MONTH, 1);
         }
