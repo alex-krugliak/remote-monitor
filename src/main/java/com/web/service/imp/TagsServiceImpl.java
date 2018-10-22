@@ -106,6 +106,18 @@ public class TagsServiceImpl implements TagsService {
             try {
                 DayTotalData dayTotalData = fillTotalDataLastDay(calDate);
                 dayTotalRepository.save(dayTotalData);
+
+                boolean isDayTotalDataNotFilled = true;
+                while (isDayTotalDataNotFilled) {
+                    calDate.add(Calendar.DATE, -1);
+                    DayTotalData daysTotalData = dayTotalRepository.getTotalDataByDate(new Date(calDate.getTime().getTime()));
+                    if (daysTotalData == null) {
+                        DayTotalData totalData = fillTotalDataLastDay(calDate);
+                        dayTotalRepository.save(totalData);
+                    } else {
+                        isDayTotalDataNotFilled = false;
+                    }
+                }
             } catch (Exception e) {
                 logger.error("Total data for this day already present in table, date - " + calDate.toString());
             }
